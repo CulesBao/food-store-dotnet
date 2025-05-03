@@ -23,7 +23,7 @@ namespace FoodStore.DTO
         [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number")]
         public double Price { get; set; }
         [DefaultValue(true)]
-        public bool Available { get; set; }
+        public int Quantity { get; set; }
         public DateTime CreatedAt { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
     }

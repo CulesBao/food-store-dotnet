@@ -16,7 +16,6 @@ namespace FoodStore.GUI
     public partial class LoginForm : Form
     {
         private static readonly AccountBLL accountBLL = new AccountBLL();
-        private static readonly AdminForm adminForm = new AdminForm();
         public LoginForm()
         {
             InitializeComponent();
@@ -34,6 +33,7 @@ namespace FoodStore.GUI
                 this.Hide();
                 if (Session.UserRole == "ADMIN")
                 {
+                    var adminForm = new AdminForm();
                     adminForm.FormClosed += (s, args) => Application.Exit();
                     adminForm.Show();
                 }

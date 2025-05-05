@@ -19,11 +19,10 @@ namespace FoodStore.DTO
         [Key]
         public int OrderId { get; set; }
         public int AccountId { get; set; }
-        [DefaultValue("PENDING")]
-        public string Status { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public string Status { get; set; } = "PENDING";
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
         [ForeignKey("AccountId")]
         public Account Account { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
     }
 }

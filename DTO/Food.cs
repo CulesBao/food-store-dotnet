@@ -17,14 +17,12 @@ namespace FoodStore.DTO
         }
         [Key]
         public int FoodId { get; set; }
-        [Required(ErrorMessage = "FoodName is required")]
+        [Required()]
         public string FoodName { get; set; }
-        [Required(ErrorMessage = "Price is required")]
-        [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number")]
+        [Required()]
         public double Price { get; set; }
-        [DefaultValue(true)]
-        public int Quantity { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public int Quantity { get; set; } = 1;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
     }
 }

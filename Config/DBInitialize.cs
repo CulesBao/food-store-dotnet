@@ -18,9 +18,7 @@ namespace FoodStore.Config
                 UserName = "admin",
                 Password = BCrypt.Net.BCrypt.EnhancedHashPassword("admin"),
                 Role = "ADMIN",
-                Name = "ADMIN",
-                CreatedAt = DateTime.Now,
-                Orders = new HashSet<Order>()
+                Name = "ADMIN"
             });
             base.Seed(context);
         }

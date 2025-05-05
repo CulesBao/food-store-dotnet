@@ -14,8 +14,16 @@ namespace FoodStore.Config
             UserName = userName;
             UserRole = userRole;
         }
-        public static int UserId { get; set; }
-        public static string UserName { get; set; }
-        public static string UserRole { get; set; }
+
+        public static void ClearSession()
+        {
+            UserId = -1;
+            UserName = string.Empty;
+            UserRole = string.Empty;
+        }
+
+        public static int UserId { get; set; } = -1;
+        public static string UserName { get; set; } = string.Empty;
+        public static string UserRole { get; set; } = string.Empty;
     }
 }

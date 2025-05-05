@@ -17,22 +17,20 @@ namespace FoodStore.DTO
         }
         [Key]
         public int AccountId { get; set; }
-        [Required(ErrorMessage = "UserName is required")]
-        [MinLength(3, ErrorMessage = "UserName must be at least 3 characters long")]
+        [Required]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
-        [MinLength(3, ErrorMessage = "Password must be at least 3 characters long")]
+        [Required()]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Name is required")]
-        [MinLength(2, ErrorMessage = "Name must be at least 2 characters long")]
+        [Required()]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Role is required")]
-        [DefaultValue("STAFF")]
-        public string Role { get; set; }
-        public DateTime CreatedAt { get; set; }
+        [Required()]
+        public string Role { get; set; } = "STAFF";
 
-        public ICollection<Order> Orders { get; set; }
+        public string PhoneNumber { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
 }

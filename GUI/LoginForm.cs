@@ -26,7 +26,6 @@ namespace FoodStore.GUI
             string username = UserNameTextBox.Text;
             string password = PasswordTextBox.Text;
             ResponseDTO responseDTO = accountBLL.Login(username, password);
-            MessageBox.Show(responseDTO.message);
             
             if (responseDTO.success)
             {
@@ -37,6 +36,20 @@ namespace FoodStore.GUI
                     adminForm.FormClosed += (s, args) => Application.Exit();
                     adminForm.Show();
                 }
+                else if (Session.UserRole == "STAFF")
+                {
+                    var staffForm = new StaffForm();
+                    staffForm.FormClosed += (s, args) => Application.Exit();
+                    staffForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid role");
+                }
+            }
+            else
+            {
+                MessageBox.Show(responseDTO.message);
             }
         }
     }

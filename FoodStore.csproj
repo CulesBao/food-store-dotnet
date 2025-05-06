@@ -75,12 +75,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\AccountBLL.cs" />
+    <Compile Include="BLL\FoodBLL.cs" />
     <Compile Include="Config\DBInitialize.cs" />
     <Compile Include="Config\FoodStoreDB.cs" />
     <Compile Include="Config\Session.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\FoodDAL.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\FilterAccountDTO.cs" />
+    <Compile Include="DTO\FilterFoodDTO.cs" />
     <Compile Include="DTO\Food.cs" />
     <Compile Include="DTO\Order.cs" />
     <Compile Include="DTO\OrderItem.cs" />
@@ -103,6 +106,21 @@
     <Compile Include="GUI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\StaffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\StaffForm.Designer.cs">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505050740351_InitialCreate.cs" />
+    <Compile Include="Migrations\202505050740351_InitialCreate.Designer.cs">
+      <DependentUpon>202505050740351_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505060640576_AddInfoForOrder.cs" />
+    <Compile Include="Migrations\202505060640576_AddInfoForOrder.Designer.cs">
+      <DependentUpon>202505060640576_AddInfoForOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\AdminForm.resx">
@@ -113,6 +131,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\StaffForm.resx">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505050740351_InitialCreate.resx">
+      <DependentUpon>202505050740351_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505060640576_AddInfoForOrder.resx">
+      <DependentUpon>202505060640576_AddInfoForOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

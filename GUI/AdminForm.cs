@@ -17,6 +17,7 @@ namespace FoodStore.GUI
     {
         private static readonly AccountBLL accountBLL = new AccountBLL();
         private static readonly FoodBLL foodBLL = new FoodBLL();
+        private static readonly OrderBLL orderBLL = new OrderBLL();
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -164,6 +165,73 @@ namespace FoodStore.GUI
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnFindRevenue_Click(object sender, EventArgs e)
+        {
+            DateTime StartDate = dtpStart.Value.Date;
+            DateTime EndDate = dtpEnd.Value.Date.AddDays(1);
+            ResponseDTO responseDTO = orderBLL.GetOrderByDateTime(-1, StartDate, EndDate);
+            if (!responseDTO.success)
+            {
+                MessageBox.Show(responseDTO.message);
+            }
+            else
+            {
+                List<FilterOrderDTO> orders = (List<FilterOrderDTO>)responseDTO.data;
+                dgvRevenue.DataSource = null;
+                dgvRevenue.DataSource = orders;
+                tbOrderQuantity.Text = orders.Count.ToString();
+                tbTotalRevenue.Text = orders.Sum(o => o.TotalPrice).ToString();
+            }
+        }
+
+        private void dgvRevenue_SelectionChanged(object sender, EventArgs e)
+        {
+            int index = dgvRevenue.CurrentCell.RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = dgvRevenue.Rows[index];
+                tbOrderId.Text = selectedRow.Cells[0].Value.ToString();
+                tbDetailCustomerName.Text = selectedRow.Cells[2].Value.ToString();
+                tbDetailCustomPN.Text = selectedRow.Cells[3].Value.ToString();
+                cmbStatus.Text = selectedRow.Cells[4].Value.ToString();
+            }
+        }
+
+        private void btnDetailOrder_Click(object sender, EventArgs e)
+        {
+            int index = dgvRevenue.CurrentCell.RowIndex;
+            if (index >= 0) { 
+                int orderId = Convert.ToInt32(dgvRevenue.Rows[index].Cells[0].Value);
+                string Name = dgvRevenue.Rows[index].Cells[2].Value.ToString();
+                string PhoneNumber = dgvRevenue.Rows[index].Cells[3].Value.ToString();
+                new DetailOrder(orderId, Name, PhoneNumber).Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to view detail");
+            }
+        }
+
+        private void btnUpdateOrder_Click(object sender, EventArgs e)
+        {
+            string Status = cmbStatus.Text;
+            int OrderId = Convert.ToInt32(tbOrderId.Text);
+            ResponseDTO responseDTO = orderBLL.UpdateOrderStatus(OrderId, Status);
+            if (!responseDTO.success)
+            {
+                MessageBox.Show(responseDTO.message);
+            }
+            else
+            {
+                MessageBox.Show("Update order status successfully");
+                tbOrderId.Text = string.Empty;
+                tbDetailCustomerName.Text = string.Empty;
+                tbDetailCustomPN.Text = string.Empty;
+                cmbStatus.Text = string.Empty;
+                btnFindRevenue_Click(sender, e);
+            }
         }
     }
 }

@@ -19,8 +19,8 @@ namespace FoodStore.DTO
         [Key]
         public int OrderId { get; set; }
         public int AccountId { get; set; }
-        public string CustomerName { get; set; } = "Unknown";
-        public string CustomerPhoneNumber { get; set; } = "Unknown";
+        public string CustomerName { get; set; } 
+        public string CustomerPhoneNumber { get; set; }
         public string Status { get; set; } = "PENDING";
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         [ForeignKey("AccountId")]

@@ -72,15 +72,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dgvFood = new System.Windows.Forms.DataGridView();
             this.panelRevenue = new System.Windows.Forms.Panel();
-            this.dtpStart = new System.Windows.Forms.DateTimePicker();
-            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.tbOrderQuantity = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tbTotalRevenue = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnDeleteOrder = new System.Windows.Forms.Button();
+            this.btnDetailOrder = new System.Windows.Forms.Button();
+            this.btnUpdateOrder = new System.Windows.Forms.Button();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbOrderId = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tbDetailCustomPN = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.tbStaffName = new System.Windows.Forms.TextBox();
-            this.tbFindFoodName = new System.Windows.Forms.TextBox();
+            this.tbDetailCustomerName = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.dgvRevenue = new System.Windows.Forms.DataGridView();
             this.btnFindRevenue = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panelManageStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
@@ -89,6 +101,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
             this.panelRevenue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRevenue)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -126,7 +139,7 @@
             this.btnRevenue.Name = "btnRevenue";
             this.btnRevenue.Size = new System.Drawing.Size(237, 41);
             this.btnRevenue.TabIndex = 3;
-            this.btnRevenue.Text = "Revenue";
+            this.btnRevenue.Text = "Statistics";
             this.btnRevenue.UseVisualStyleBackColor = true;
             this.btnRevenue.Click += new System.EventHandler(this.btnRevenue_Click);
             // 
@@ -557,11 +570,23 @@
             // 
             // panelRevenue
             // 
-            this.panelRevenue.Controls.Add(this.btnFindRevenue);
-            this.panelRevenue.Controls.Add(this.tbFindFoodName);
-            this.panelRevenue.Controls.Add(this.label17);
-            this.panelRevenue.Controls.Add(this.tbStaffName);
+            this.panelRevenue.Controls.Add(this.tbOrderQuantity);
+            this.panelRevenue.Controls.Add(this.label21);
+            this.panelRevenue.Controls.Add(this.tbTotalRevenue);
+            this.panelRevenue.Controls.Add(this.label20);
+            this.panelRevenue.Controls.Add(this.btnDeleteOrder);
+            this.panelRevenue.Controls.Add(this.btnDetailOrder);
+            this.panelRevenue.Controls.Add(this.btnUpdateOrder);
+            this.panelRevenue.Controls.Add(this.cmbStatus);
+            this.panelRevenue.Controls.Add(this.label19);
+            this.panelRevenue.Controls.Add(this.tbOrderId);
+            this.panelRevenue.Controls.Add(this.label18);
+            this.panelRevenue.Controls.Add(this.tbDetailCustomPN);
             this.panelRevenue.Controls.Add(this.label16);
+            this.panelRevenue.Controls.Add(this.tbDetailCustomerName);
+            this.panelRevenue.Controls.Add(this.label17);
+            this.panelRevenue.Controls.Add(this.dgvRevenue);
+            this.panelRevenue.Controls.Add(this.btnFindRevenue);
             this.panelRevenue.Controls.Add(this.label15);
             this.panelRevenue.Controls.Add(this.label14);
             this.panelRevenue.Controls.Add(this.dtpEnd);
@@ -572,85 +597,213 @@
             this.panelRevenue.Size = new System.Drawing.Size(963, 574);
             this.panelRevenue.TabIndex = 1;
             // 
-            // dtpStart
+            // tbOrderQuantity
             // 
-            this.dtpStart.Location = new System.Drawing.Point(130, 12);
-            this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(200, 22);
-            this.dtpStart.TabIndex = 0;
+            this.tbOrderQuantity.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.tbOrderQuantity.Location = new System.Drawing.Point(559, 531);
+            this.tbOrderQuantity.Name = "tbOrderQuantity";
+            this.tbOrderQuantity.ReadOnly = true;
+            this.tbOrderQuantity.Size = new System.Drawing.Size(208, 28);
+            this.tbOrderQuantity.TabIndex = 42;
             // 
-            // dtpEnd
+            // label21
             // 
-            this.dtpEnd.Location = new System.Drawing.Point(130, 48);
-            this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(200, 22);
-            this.dtpEnd.TabIndex = 1;
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(424, 534);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(80, 21);
+            this.label21.TabIndex = 41;
+            this.label21.Text = "Quantiy:";
             // 
-            // label14
+            // tbTotalRevenue
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(40, 13);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(54, 21);
-            this.label14.TabIndex = 20;
-            this.label14.Text = "Start:";
+            this.tbTotalRevenue.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.tbTotalRevenue.Location = new System.Drawing.Point(175, 531);
+            this.tbTotalRevenue.Name = "tbTotalRevenue";
+            this.tbTotalRevenue.ReadOnly = true;
+            this.tbTotalRevenue.Size = new System.Drawing.Size(208, 28);
+            this.tbTotalRevenue.TabIndex = 40;
             // 
-            // label15
+            // label20
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(40, 49);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 21);
-            this.label15.TabIndex = 21;
-            this.label15.Text = "End:";
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(40, 534);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 21);
+            this.label20.TabIndex = 39;
+            this.label20.Text = "Earn:";
+            // 
+            // btnDeleteOrder
+            // 
+            this.btnDeleteOrder.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDeleteOrder.Location = new System.Drawing.Point(789, 461);
+            this.btnDeleteOrder.Name = "btnDeleteOrder";
+            this.btnDeleteOrder.Size = new System.Drawing.Size(98, 35);
+            this.btnDeleteOrder.TabIndex = 38;
+            this.btnDeleteOrder.Text = "Delete";
+            this.btnDeleteOrder.UseVisualStyleBackColor = true;
+            // 
+            // btnDetailOrder
+            // 
+            this.btnDetailOrder.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDetailOrder.Location = new System.Drawing.Point(853, 404);
+            this.btnDetailOrder.Name = "btnDetailOrder";
+            this.btnDetailOrder.Size = new System.Drawing.Size(98, 35);
+            this.btnDetailOrder.TabIndex = 37;
+            this.btnDetailOrder.Text = "Detail";
+            this.btnDetailOrder.UseVisualStyleBackColor = true;
+            this.btnDetailOrder.Click += new System.EventHandler(this.btnDetailOrder_Click);
+            // 
+            // btnUpdateOrder
+            // 
+            this.btnUpdateOrder.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateOrder.Location = new System.Drawing.Point(724, 403);
+            this.btnUpdateOrder.Name = "btnUpdateOrder";
+            this.btnUpdateOrder.Size = new System.Drawing.Size(98, 35);
+            this.btnUpdateOrder.TabIndex = 36;
+            this.btnUpdateOrder.Text = "Update";
+            this.btnUpdateOrder.UseVisualStyleBackColor = true;
+            this.btnUpdateOrder.Click += new System.EventHandler(this.btnUpdateOrder_Click);
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "CANCEL",
+            "PENDING",
+            "PAID"});
+            this.cmbStatus.Location = new System.Drawing.Point(733, 332);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(199, 29);
+            this.cmbStatus.TabIndex = 35;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(729, 296);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(61, 21);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Status";
+            // 
+            // tbOrderId
+            // 
+            this.tbOrderId.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.tbOrderId.Location = new System.Drawing.Point(724, 122);
+            this.tbOrderId.Name = "tbOrderId";
+            this.tbOrderId.ReadOnly = true;
+            this.tbOrderId.Size = new System.Drawing.Size(208, 28);
+            this.tbOrderId.TabIndex = 33;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(728, 94);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(83, 21);
+            this.label18.TabIndex = 32;
+            this.label18.Text = "Order id:";
+            // 
+            // tbDetailCustomPN
+            // 
+            this.tbDetailCustomPN.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.tbDetailCustomPN.Location = new System.Drawing.Point(724, 257);
+            this.tbDetailCustomPN.Name = "tbDetailCustomPN";
+            this.tbDetailCustomPN.ReadOnly = true;
+            this.tbDetailCustomPN.Size = new System.Drawing.Size(208, 28);
+            this.tbDetailCustomPN.TabIndex = 31;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(373, 13);
+            this.label16.Location = new System.Drawing.Point(728, 229);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(105, 21);
-            this.label16.TabIndex = 22;
-            this.label16.Text = "Staff name:";
+            this.label16.Size = new System.Drawing.Size(222, 21);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "Customer phone number:";
             // 
-            // tbStaffName
+            // tbDetailCustomerName
             // 
-            this.tbStaffName.Font = new System.Drawing.Font("Century Gothic", 10.2F);
-            this.tbStaffName.Location = new System.Drawing.Point(484, 10);
-            this.tbStaffName.Name = "tbStaffName";
-            this.tbStaffName.Size = new System.Drawing.Size(161, 28);
-            this.tbStaffName.TabIndex = 23;
-            // 
-            // tbFindFoodName
-            // 
-            this.tbFindFoodName.Font = new System.Drawing.Font("Century Gothic", 10.2F);
-            this.tbFindFoodName.Location = new System.Drawing.Point(484, 45);
-            this.tbFindFoodName.Name = "tbFindFoodName";
-            this.tbFindFoodName.Size = new System.Drawing.Size(161, 28);
-            this.tbFindFoodName.TabIndex = 25;
+            this.tbDetailCustomerName.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.tbDetailCustomerName.Location = new System.Drawing.Point(724, 183);
+            this.tbDetailCustomerName.Name = "tbDetailCustomerName";
+            this.tbDetailCustomerName.ReadOnly = true;
+            this.tbDetailCustomerName.Size = new System.Drawing.Size(208, 28);
+            this.tbDetailCustomerName.TabIndex = 29;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(373, 48);
+            this.label17.Location = new System.Drawing.Point(728, 155);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(110, 21);
-            this.label17.TabIndex = 24;
-            this.label17.Text = "Food name:";
+            this.label17.Size = new System.Drawing.Size(148, 21);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Customer name:";
+            // 
+            // dgvRevenue
+            // 
+            this.dgvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRevenue.Location = new System.Drawing.Point(44, 87);
+            this.dgvRevenue.MultiSelect = false;
+            this.dgvRevenue.Name = "dgvRevenue";
+            this.dgvRevenue.RowHeadersWidth = 51;
+            this.dgvRevenue.RowTemplate.Height = 24;
+            this.dgvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRevenue.Size = new System.Drawing.Size(674, 409);
+            this.dgvRevenue.TabIndex = 27;
+            this.dgvRevenue.SelectionChanged += new System.EventHandler(this.dgvRevenue_SelectionChanged);
             // 
             // btnFindRevenue
             // 
             this.btnFindRevenue.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.btnFindRevenue.Location = new System.Drawing.Point(705, 20);
+            this.btnFindRevenue.Location = new System.Drawing.Point(798, 24);
             this.btnFindRevenue.Name = "btnFindRevenue";
             this.btnFindRevenue.Size = new System.Drawing.Size(107, 35);
             this.btnFindRevenue.TabIndex = 26;
             this.btnFindRevenue.Text = "Find";
             this.btnFindRevenue.UseVisualStyleBackColor = true;
+            this.btnFindRevenue.Click += new System.EventHandler(this.btnFindRevenue_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(383, 29);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(46, 21);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "End:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(40, 29);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(54, 21);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Start:";
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.Location = new System.Drawing.Point(473, 28);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(200, 22);
+            this.dtpEnd.TabIndex = 1;
+            // 
+            // dtpStart
+            // 
+            this.dtpStart.Location = new System.Drawing.Point(130, 28);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(200, 22);
+            this.dtpStart.TabIndex = 0;
             // 
             // AdminForm
             // 
@@ -680,6 +833,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).EndInit();
             this.panelRevenue.ResumeLayout(false);
             this.panelRevenue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRevenue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -732,12 +886,24 @@
         private System.Windows.Forms.TextBox tbFoodId;
         private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.DateTimePicker dtpStart;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox tbFindFoodName;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox tbStaffName;
         private System.Windows.Forms.Button btnFindRevenue;
+        private System.Windows.Forms.DataGridView dgvRevenue;
+        private System.Windows.Forms.TextBox tbDetailCustomPN;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbDetailCustomerName;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tbOrderId;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnDeleteOrder;
+        private System.Windows.Forms.Button btnDetailOrder;
+        private System.Windows.Forms.Button btnUpdateOrder;
+        private System.Windows.Forms.TextBox tbOrderQuantity;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox tbTotalRevenue;
+        private System.Windows.Forms.Label label20;
     }
 }

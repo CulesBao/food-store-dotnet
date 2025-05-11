@@ -87,6 +87,14 @@ namespace FoodStore.GUI
                 MessageBox.Show("Quantity order must be greater than 0");
                 return;
             }
+            if (Convert.ToInt32(tbOrders.Text) > Convert.ToInt32(tbFoodQuantity.Text))
+            {
+                var result = MessageBox.Show("Quantity order is greater than food quantity, do you want to continue?", "Warning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
             orderItemDTOs.Add(new OrderItemDTO()
             {
                 ID = Convert.ToInt32(tbFoodId.Text),
@@ -120,7 +128,7 @@ namespace FoodStore.GUI
         {
             string phoneNumber = tbDetailCustomPN.Text;
             string CustomerName = tbDetailCustomerName.Text;
-            ResponseDTO responseDTO = orderBLL.AddNewOrder(phoneNumber, CustomerName, orderItemDTOs);
+            ResponseDTO responseDTO = orderBLL.AddNewOrder(CustomerName, phoneNumber, orderItemDTOs);
             if (responseDTO.success)
             {
                 MessageBox.Show("Order created successfully");
@@ -134,6 +142,83 @@ namespace FoodStore.GUI
             {
                 MessageBox.Show(responseDTO.message);
             }
+        }
+
+        private void btnFindRevenue_Click(object sender, EventArgs e)
+        {
+            DateTime StartDate = dtpStart.Value.Date;
+            DateTime EndDate = dtpEnd.Value.Date.AddDays(1);
+            ResponseDTO responseDTO = orderBLL.GetOrderByDateTime(Session.UserId, StartDate, EndDate);
+            if (!responseDTO.success)
+            {
+                MessageBox.Show(responseDTO.message);
+            }
+            else
+            {
+                List<FilterOrderDTO> orders = (List<FilterOrderDTO>)responseDTO.data;
+                dgvRevenue.DataSource = null;
+                dgvRevenue.DataSource = orders;
+                tbOrderQuantity.Text = orders.Count.ToString();
+                tbTotalRevenue.Text = orders.Sum(o => o.TotalPrice).ToString();
+            }
+        }
+
+        private void btnUpdateOrder_Click(object sender, EventArgs e)
+        {
+            string Status = cmbStatus.Text;
+            int OrderId = Convert.ToInt32(tbOrderId.Text);
+            ResponseDTO responseDTO = orderBLL.UpdateOrderStatus(OrderId, Status);
+            if (!responseDTO.success)
+            {
+                MessageBox.Show(responseDTO.message);
+            }
+            else
+            {
+                MessageBox.Show("Update order status successfully");
+                tbOrderId.Text = string.Empty;
+                tbDetailCustomerName.Text = string.Empty;
+                tbDetailCustomPN.Text = string.Empty;
+                cmbStatus.Text = string.Empty;
+                btnFindRevenue_Click(sender, e);
+            }
+        }
+
+        private void btnDetailOrder_Click(object sender, EventArgs e)
+        {
+            int index = dgvRevenue.CurrentCell.RowIndex;
+            if (index >= 0)
+            {
+                int orderId = Convert.ToInt32(dgvRevenue.Rows[index].Cells[0].Value);
+                string Name = dgvRevenue.Rows[index].Cells[2].Value.ToString();
+                string PhoneNumber = dgvRevenue.Rows[index].Cells[3].Value.ToString();
+                new DetailOrder(orderId, Name, PhoneNumber).Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to view detail");
+            }
+        }
+        private void dgvRevenue_SelectionChanged(object sender, EventArgs e)
+        {
+            int index = dgvRevenue.CurrentCell.RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = dgvRevenue.Rows[index];
+                tbOrderId.Text = selectedRow.Cells[0].Value.ToString();
+                textBox2.Text = selectedRow.Cells[2].Value.ToString();
+                textBox1.Text = selectedRow.Cells[3].Value.ToString();
+                cmbStatus.Text = selectedRow.Cells[4].Value.ToString();
+            }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            panelPlaceOrder.BringToFront();
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            panelHistory.BringToFront();
         }
     }
 }

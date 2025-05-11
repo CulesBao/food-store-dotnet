@@ -233,5 +233,106 @@ namespace FoodStore.GUI
                 btnFindRevenue_Click(sender, e);
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+                    "Are you sure you want to delete this account?\nThis may affect order statistics.",
+                    "Delete Account",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+            int index = dgvStaff.CurrentCell.RowIndex;
+            if (index >= 0)
+            {
+                int accountId = Convert.ToInt32(dgvStaff.Rows[index].Cells[0].Value);
+                ResponseDTO responseDTO = accountBLL.DeleteAccount(accountId);
+                if (!responseDTO.success)
+                {
+                    MessageBox.Show(responseDTO.message);
+                }
+                else
+                {
+                    MessageBox.Show("Delete account successfully");
+                    btnFilter_Click(sender, e);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to delete");
+            }
+        }
+
+        private void btnFoodDelete_Click(object sender, EventArgs e)
+        {
+            int FoodId = Convert.ToInt32(tbFoodId.Text);
+            var confirmResult = MessageBox.Show(
+                    "Are you sure you want to delete this food?\n This will be affected to order statictis",
+                    "Delete Food",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+            ResponseDTO responseDTO = foodBLL.DeleteFoodById(FoodId);
+            if (!responseDTO.success)
+            {
+                MessageBox.Show(responseDTO.message);
+            }
+            else
+            {
+                MessageBox.Show("Delete food successfully");
+                tbFoodId.Text = string.Empty;
+                tbFoodName.Text = string.Empty;
+                tbFoodPrice.Text = string.Empty;
+                tbFoodQuantity.Text = string.Empty;
+                btnFoodFind_Click(sender, e);
+            }
+        }
+
+        private void btnDeleteOrder_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+                    "Are you sure you want to delete this order?\nThis may affect order statistics.",
+                    "Delete Order",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+            int index = dgvRevenue.CurrentCell.RowIndex;
+            if (index >= 0)
+            {
+                int orderId = Convert.ToInt32(dgvRevenue.Rows[index].Cells[0].Value);
+                ResponseDTO responseDTO = orderBLL.DeleteOrderById(orderId);
+                if (!responseDTO.success)
+                {
+                    MessageBox.Show(responseDTO.message);
+                }
+                else
+                {
+                    MessageBox.Show("Delete order successfully");
+                    tbOrderId.Text = string.Empty;
+                    tbDetailCustomerName.Text = string.Empty;
+                    tbDetailCustomPN.Text = string.Empty;
+                    cmbStatus.Text = string.Empty;
+                    btnFindRevenue_Click(sender, e);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to delete");
+            }
+        }
     }
 }

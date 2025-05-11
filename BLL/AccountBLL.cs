@@ -213,5 +213,27 @@ namespace FoodStore.BLL
                 };
             }
         }
+        public ResponseDTO DeleteAccount(int accountId)
+        {
+            try
+            {
+                accountDAL.DeleteAccount(accountId);
+                return new ResponseDTO()
+                {
+                    success = true,
+                    data = null,
+                    message = "Delete account successfully"
+                };
+            }
+            catch (Exception e)
+            {
+                return new ResponseDTO()
+                {
+                    success = false,
+                    data = null,
+                    message = e.Message
+                };
+            }
+        }
     }
 }

@@ -228,6 +228,7 @@
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -461,6 +462,7 @@
             this.btnFoodDelete.TabIndex = 7;
             this.btnFoodDelete.Text = "Delete";
             this.btnFoodDelete.UseVisualStyleBackColor = true;
+            this.btnFoodDelete.Click += new System.EventHandler(this.btnFoodDelete_Click);
             // 
             // btnFoodUpdate
             // 
@@ -644,6 +646,7 @@
             this.btnDeleteOrder.TabIndex = 38;
             this.btnDeleteOrder.Text = "Delete";
             this.btnDeleteOrder.UseVisualStyleBackColor = true;
+            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
             // 
             // btnDetailOrder
             // 
@@ -810,9 +813,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.Controls.Add(this.panelManageStaff);
             this.Controls.Add(this.panelRevenue);
             this.Controls.Add(this.panelManageFood);
-            this.Controls.Add(this.panelManageStaff);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

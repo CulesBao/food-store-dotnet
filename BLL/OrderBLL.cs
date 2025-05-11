@@ -94,5 +94,27 @@ namespace FoodStore.BLL
                 };
             }
         }
+        public ResponseDTO DeleteOrderById(int OrderId)
+        {
+            try
+            {
+                orderDAL.DeleteOrder(OrderId);
+                return new ResponseDTO()
+                {
+                    success = true,
+                    message = "Delete order successfully",
+                    data = null
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO
+                {
+                    success = false,
+                    message = ex.Message,
+                    data = null
+                };
+            }
+        }
     }
 }

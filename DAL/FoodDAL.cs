@@ -39,5 +39,18 @@ namespace FoodStore.DAL
             oldFood.Quantity = food.Quantity;
             return Instance.SaveChanges();
         }
+        public void DeleteFood(int foodId)
+        {
+            Food food = Instance.Foods.Where(f => f.FoodId == foodId).FirstOrDefault();
+            if (food != null)
+            {
+                Instance.Foods.Remove(food);
+                Instance.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Food not found");
+            }
+        }
     }
 }

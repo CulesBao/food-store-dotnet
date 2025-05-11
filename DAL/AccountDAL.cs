@@ -66,5 +66,22 @@ namespace FoodStore.DAL
             }
             return 0;
         }
+        public void DeleteAccount(int accountId)
+        {
+            if (accountId == 1)
+            {
+                throw new Exception("Cannot delete admin account");
+            }
+            Account account = Instance.Accounts.Where(a => a.AccountId == accountId).FirstOrDefault();
+            if (account != null)
+            {
+                Instance.Accounts.Remove(account);
+                Instance.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Account not found");
+            }
+        }
     }
 }

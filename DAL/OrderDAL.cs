@@ -31,6 +31,7 @@ namespace FoodStore.DAL
                     Order = order
                 };
                 foodStoreDB.OrderItems.Add(orderItem);
+                food.Quantity -= item.Quantity;
             }
             foodStoreDB.SaveChanges();
         }
@@ -67,6 +68,18 @@ namespace FoodStore.DAL
             }
             order.Status = Status;
             return foodStoreDB.SaveChanges();
+        }
+        public void DeleteOrder(int OrderId) {
+            Order order = foodStoreDB.Orders.Where(o => o.OrderId == OrderId).FirstOrDefault();
+            if (order != null)
+            {
+                foodStoreDB.Orders.Remove(order);
+                foodStoreDB.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Order not found");
+            }
         }
     }
 }

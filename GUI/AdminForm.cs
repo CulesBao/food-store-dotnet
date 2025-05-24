@@ -111,6 +111,18 @@ namespace FoodStore.GUI
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             string FoodName = tbAddFoodName.Text;
+            string FoodPriceString = tbFoodPrice.Text;
+            if (string.IsNullOrEmpty(FoodPriceString))
+            {
+                MessageBox.Show("Food price cannot empty");
+                return;
+            }
+            string FoodQuantityString = tbFoodQuantity.Text;
+            if (string.IsNullOrEmpty(FoodQuantityString))
+            {
+                MessageBox.Show("Food quantity cannot empty");
+                return;
+            }
             int FoodPrice = Convert.ToInt32(tbAddFoodPrice.Text);
             int FoodQuantity = Convert.ToInt32(tbAddFoodQuantity.Text);
             ResponseDTO responseDTO = foodBLL.AddFood(new Food()
@@ -309,6 +321,10 @@ namespace FoodStore.GUI
             if (confirmResult == DialogResult.No)
             {
                 return;
+            }
+            if (dgvRevenue.CurrentCell == null)
+            {
+                MessageBox.Show("Please select item to delete");
             }
             int index = dgvRevenue.CurrentCell.RowIndex;
             if (index >= 0)

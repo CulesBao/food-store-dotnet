@@ -10,7 +10,7 @@ namespace FoodStore.DAL
 {
     public class OrderItemDAL
     {
-        private static readonly FoodStoreDB foodStoreDB = new FoodStoreDB();
+        private static FoodStoreDB foodStoreDB = new FoodStoreDB();
         public List<DetailOrderItem> GetOrderItemByOrderId(int OrderId)
         {
             var orderItems = foodStoreDB.OrderItems

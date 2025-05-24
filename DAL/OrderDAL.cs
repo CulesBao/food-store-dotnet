@@ -10,7 +10,7 @@ namespace FoodStore.DAL
 {
     public class OrderDAL
     {
-        private static readonly FoodStoreDB foodStoreDB = new FoodStoreDB();
+        private static FoodStoreDB foodStoreDB = new FoodStoreDB();
         public void CreateOrder(Order order, List<OrderItemDTO> orderItemDTO)
         {
             Account account = foodStoreDB.Accounts.Where(a => a.AccountId == Session.UserId).FirstOrDefault();

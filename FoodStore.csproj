@@ -79,7 +79,7 @@
     <Compile Include="BLL\OrderBLL.cs" />
     <Compile Include="BLL\OrderItemBLL.cs" />
     <Compile Include="Config\DBInitialize.cs" />
-    <Compile Include="Config\FoodStoreDB.cs" />
+    <Compile Include="DAL\FoodStoreDB.cs" />
     <Compile Include="Config\Session.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\FoodDAL.cs" />

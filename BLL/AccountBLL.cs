@@ -14,7 +14,7 @@ namespace FoodStore.BLL
 {
     public class AccountBLL
     {
-        private static readonly AccountDAL accountDAL = new AccountDAL();
+        private static AccountDAL accountDAL = new AccountDAL();
         private void CheckPassword(string Password, string ConfirmPassword)
         {
             if (Password.Trim() == string.Empty || ConfirmPassword.Trim() == string.Empty)
@@ -74,12 +74,7 @@ namespace FoodStore.BLL
                         message = "Login successful"
                     };
                 }
-                return new ResponseDTO
-                {
-                    success = false,
-                    data = null,
-                    message = "Wrong username or password"
-                };
+                throw new Exception("Wrong username or password");
             }
             catch (Exception e)
             {

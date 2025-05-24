@@ -9,7 +9,7 @@ namespace FoodStore.BLL
 {
     public class OrderItemBLL
     {
-        private static readonly OrderItemBLL orderItemBLL = new OrderItemBLL();
+        private static OrderItemBLL orderItemBLL = new OrderItemBLL();
         public ResponseDTO GetOrderItemByOrderId(int OrderId)
         {
             try
@@ -18,12 +18,7 @@ namespace FoodStore.BLL
                 var orderItems = orderItemDAL.GetOrderItemByOrderId(OrderId);
                 if (orderItems == null || orderItems.Count == 0)
                 {
-                    return new ResponseDTO
-                    {
-                        success = false,
-                        message = "No items found for this order.",
-                        data = null
-                    };
+                    throw new Exception("No items found for this order.");
                 }
                 return new ResponseDTO
                 {

@@ -10,7 +10,16 @@ namespace FoodStore.BLL
 {
     public class FoodBLL
     {
-        private static readonly FoodDAL foodDAL = new FoodDAL();
+        private static FoodDAL foodDAL = new FoodDAL();
+        private void validateFood(Food food)
+        {
+            if (string.IsNullOrEmpty(food.FoodName))
+                throw new Exception("Food name is required");
+            if (food.Quantity <= 0)
+                throw new Exception("Quantity must be greater than 0");
+            if (food.Price <= 0)
+                throw new Exception("Price must be greater than 0");
+        }
         public ResponseDTO GetFoodsByName(string Name)
         {
             try
@@ -36,6 +45,7 @@ namespace FoodStore.BLL
         {
             try
             {
+                validateFood(food);
                 if (foodDAL.AddFood(food) > 0)
                 {
                     return new ResponseDTO()
@@ -64,6 +74,7 @@ namespace FoodStore.BLL
         {
             try
             {
+                validateFood(food);
                 return new ResponseDTO()
                 {
                     success = foodDAL.UpdateFood(food) > 0,

@@ -10,7 +10,7 @@ namespace FoodStore.DAL
 {
     public class AccountDAL
     {
-        private static readonly FoodStoreDB Instance = new FoodStoreDB();
+        private static FoodStoreDB Instance = new FoodStoreDB();
 
         public int AddNewAccount(Account account)
         {

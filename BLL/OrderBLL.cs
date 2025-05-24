@@ -10,19 +10,14 @@ namespace FoodStore.BLL
 {
     public class OrderBLL
     {
-        private static readonly OrderDAL orderDAL = new OrderDAL();
+        private static OrderDAL orderDAL = new OrderDAL();
         public ResponseDTO AddNewOrder(string name, string phoneNumber, List<OrderItemDTO> items)
         {
             try
             {
                 if (items == null || items.Count == 0)
                 {
-                    return new ResponseDTO()
-                    {
-                        success = false,
-                        message = "No items in the order",
-                        data = null
-                    };
+                    throw new Exception("No item orders!");
                 }
                 orderDAL.CreateOrder(new Order()
                 {
